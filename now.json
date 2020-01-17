@@ -1,0 +1,7 @@
+{
+  "build": {
+    "env": {
+      "REACT_APP_MAPBOX_TOKEN": "@tsm-bakeoff-ts-token"
+    }
+  }
+}
