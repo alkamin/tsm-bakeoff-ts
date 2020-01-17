@@ -1,6 +1,5 @@
-import React, { forwardRef, ReactNode, ForwardRefExoticComponent } from "react";
+import React, { forwardRef, ReactNode } from "react";
 import { Box } from "@blasterjs/core";
-import styled from "styled-components";
 
 type BodyFC = {
   Sidebar: typeof AppSidebar;

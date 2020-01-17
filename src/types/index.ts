@@ -1,4 +1,5 @@
 import * as t from "io-ts";
+import { optionFromNullable } from "io-ts-types/lib/optionFromNullable";
 
 export class EnumType<A> extends t.Type<A> {
   public readonly _tag: "EnumType" = "EnumType";
@@ -44,3 +45,29 @@ export const geoJSONFeatureCollectionCodec = <
     type: t.literal("FeatureCollection"),
     features: t.array(geoJSONFeatureCodec(geometryCodec, propertiesCodec))
   });
+
+export const schoolPropertiesCodec = t.type({
+  OBJECTID: t.number,
+  AUN: optionFromNullable(t.number),
+  SCHOOL_NUM: optionFromNullable(t.number),
+  LOCATION_ID: optionFromNullable(t.string),
+  SCHOOL_NAME: t.string,
+  SCHOOL_NAME_LABEL: t.string,
+  STREET_ADDRESS: t.string,
+  ZIP_CODE: t.string,
+  PHONE_NUMBER: t.string,
+  ACTIVE: optionFromNullable(t.string),
+  GRADE_LEVEL: optionFromNullable(t.string),
+  GRADE_ORG: optionFromNullable(t.string),
+  ENROLLMENT: optionFromNullable(t.number),
+  TYPE: t.number,
+  TYPE_SPECIFIC: optionFromNullable(t.string)
+});
+
+export const schoolFeatureCollectionCodec = geoJSONFeatureCollectionCodec(
+  geoJSONPointCodec,
+  schoolPropertiesCodec
+);
+export type SchoolFeatureCollection = t.TypeOf<
+  typeof schoolFeatureCollectionCodec
+>;
