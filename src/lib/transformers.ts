@@ -12,6 +12,6 @@ export const decodeT = <T extends {}>(c: TypeC<any>) => (data: any): T => {
         .concat(` when decoding ${JSON.stringify(data)}`);
       throw new Error(e);
     },
-    decoded => decoded
+    (decoded) => decoded
   );
 };
