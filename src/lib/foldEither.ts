@@ -9,8 +9,5 @@ export default function foldEither<E, A, B>(
   onLeft: () => B,
   onRight: (a: A) => B
 ): B {
-  return pipe(
-    x,
-    fold(onLeft, onRight)
-  );
+  return pipe(x, fold(onLeft, onRight));
 }

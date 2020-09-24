@@ -7,8 +7,8 @@ const dataLayer = {
   id: "points",
   type: "circle",
   paint: {
-    "circle-radius": 4
-  }
+    "circle-radius": 4,
+  },
 };
 
 const labelLayer = {
@@ -18,9 +18,9 @@ const labelLayer = {
     "text-field": ["get", "SCHOOL_NAME"],
     "text-font": ["Open Sans Semibold"],
     "text-offset": [0, 0.6],
-    "text-anchor": "top"
+    "text-anchor": "top",
   } as SymbolLayout,
-  paint: {}
+  paint: {},
 };
 
 type Props = {

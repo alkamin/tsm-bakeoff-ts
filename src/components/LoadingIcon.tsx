@@ -12,5 +12,11 @@ const StyledIcon = styled(Icon)`
 `;
 
 export default () => (
-  <StyledIcon name="load" size="24px" alignSelf="center" m="auto" color="gray500" />
+  <StyledIcon
+    name="load"
+    size="24px"
+    alignSelf="center"
+    m="auto"
+    color="gray500"
+  />
 );

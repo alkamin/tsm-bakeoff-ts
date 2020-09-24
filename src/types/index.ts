@@ -7,7 +7,7 @@ export class EnumType<A> extends t.Type<A> {
   public constructor(e: object, name?: string) {
     super(
       name || "enum",
-      (u): u is A => Object.values(this.enumObject).some(v => v === u),
+      (u): u is A => Object.values(this.enumObject).some((v) => v === u),
       (u, c) => (this.is(u) ? t.success(u) : t.failure(u, c)),
       t.identity
     );
@@ -21,7 +21,7 @@ export function createEnumType<T>(e: object, name?: string) {
 
 export const geoJSONPointCodec = t.type({
   type: t.literal("Point"),
-  coordinates: t.tuple([t.number, t.number])
+  coordinates: t.tuple([t.number, t.number]),
 });
 
 export const geoJSONFeatureCodec = <G extends t.Mixed, P extends t.Mixed>(
@@ -31,7 +31,7 @@ export const geoJSONFeatureCodec = <G extends t.Mixed, P extends t.Mixed>(
   t.type({
     geometry: geometryCodec,
     type: t.literal("Feature"),
-    properties: propertiesCodec
+    properties: propertiesCodec,
   });
 
 export const geoJSONFeatureCollectionCodec = <
@@ -43,7 +43,7 @@ export const geoJSONFeatureCollectionCodec = <
 ) =>
   t.type({
     type: t.literal("FeatureCollection"),
-    features: t.array(geoJSONFeatureCodec(geometryCodec, propertiesCodec))
+    features: t.array(geoJSONFeatureCodec(geometryCodec, propertiesCodec)),
   });
 
 export const schoolPropertiesCodec = t.type({
@@ -61,7 +61,7 @@ export const schoolPropertiesCodec = t.type({
   GRADE_ORG: optionFromNullable(t.string),
   ENROLLMENT: optionFromNullable(t.number),
   TYPE: t.number,
-  TYPE_SPECIFIC: optionFromNullable(t.string)
+  TYPE_SPECIFIC: optionFromNullable(t.string),
 });
 
 export const schoolFeatureCollectionCodec = geoJSONFeatureCollectionCodec(
