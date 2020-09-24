@@ -24,7 +24,7 @@ const labelLayer = {
 };
 
 type Props = {
-  data: SchoolFeatureCollection | undefined;
+  data: any;
   viewport: ViewportProps | undefined;
   onViewportChange: (v: ViewportProps) => void;
 };
