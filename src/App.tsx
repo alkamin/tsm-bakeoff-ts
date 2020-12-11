@@ -7,8 +7,12 @@ import { useAsync, useMeasure } from "react-use";
 import LoadingIcon from "components/LoadingIcon";
 import { ViewportProps } from "react-map-gl";
 import Map from "components/Map";
+import { STAC } from "./stac.js";
 
 const App: React.FC = () => {
+  // const collections = STAC.getCollections();
+  // console.log(collections);
+  console.log(STAC);
   const collection = {
     stac_version: "0.9.0",
     stac_extensions: ["label"],
@@ -76,19 +80,19 @@ const App: React.FC = () => {
       ) : error ? (
         <Text>{error.message}</Text>
       ) : (
-        <AppBody>
-          <AppBody.Sidebar>
-            <Text fontWeight="bold">Stats</Text>
-          </AppBody.Sidebar>
-          <AppBody.Main ref={mapRef}>
-            <Map
-              data={value}
-              viewport={viewport}
-              onViewportChange={(viewport) => setViewport(viewport)}
-            />
-          </AppBody.Main>
-        </AppBody>
-      )}
+            <AppBody>
+              <AppBody.Sidebar>
+                <Text fontWeight="bold">Stats</Text>
+              </AppBody.Sidebar>
+              <AppBody.Main ref={mapRef}>
+                <Map
+                  data={value}
+                  viewport={viewport}
+                  onViewportChange={(viewport) => setViewport(viewport)}
+                />
+              </AppBody.Main>
+            </AppBody>
+          )}
     </AppContainer>
   );
 };

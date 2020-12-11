@@ -14,12 +14,13 @@ services:
       start_period: 5s
 
   franklin:
-    image: quay.io/azavea/franklin:latest
+    image: quay.io/azavea/franklin:c93f2ff
     depends_on:
       database:
         condition: service_healthy
     command:
       - serve
+      - --run-migrations
     volumes:
       - ./:/opt/franklin/
     environment:
