@@ -13,24 +13,23 @@ import io.circe.ParsingFailure
 import java.net.URI
 import java.util.UUID
 import scala.scalajs.js.annotation.JSExportTopLevel
-import scala.scalajs.js.annotation.JSExport
+import java.nio.charset.StandardCharsets
 
-@JSExportTopLevel("STAC")
 object client {
   val client = basicRequest
   implicit val ec = scala.concurrent.ExecutionContext.Implicits.global
   implicit val backend = FetchBackend()
 
-  @JSExport("getCollection")
-  def getCollection(collectionId: UUID): Future[StacCollection] =
+  @JSExportTopLevel("collection")
+  def collection(collectionId: String): Future[StacCollection] =
     client
-      .get(uri"http://localhost:9090/collections/${collectionId}")
+      .get(uri"http://localhost:9090/collections/$collectionId")
       .response(asJson[StacCollection])
       .send()
       .decode
 
-  @JSExport("getCollections")
-  def getCollections: Future[List[StacCollection]] =
+  @JSExportTopLevel("collections")
+  def collections(): Future[List[StacCollection]] =
     client
       .get(Uri(URI.create("http://localhost:9090/collections")))
       .response(asJson[List[StacCollection]])

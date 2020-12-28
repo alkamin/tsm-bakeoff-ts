@@ -7,13 +7,12 @@ import { useAsync, useMeasure } from "react-use";
 import LoadingIcon from "components/LoadingIcon";
 import { ViewportProps } from "react-map-gl";
 import Map from "components/Map";
-import { STAC } from "./stac.js";
+import { collection, collections } from "./stac.js";
 
 const App: React.FC = () => {
-  // const collections = STAC.getCollections();
-  // console.log(collections);
-  console.log(STAC);
-  const collection = {
+  collections();
+  collection("doesnt-exist");
+  const collectionC = {
     stac_version: "0.9.0",
     stac_extensions: ["label"],
     id: "berlin",
@@ -55,8 +54,8 @@ const App: React.FC = () => {
       },
     ],
   };
-  const { value, error, loading } = useAsync<typeof collection>(async () => {
-    const result = await Promise.resolve(collection);
+  const { value, error, loading } = useAsync<typeof collectionC>(async () => {
+    const result = await Promise.resolve(collectionC);
     return result;
   });
 

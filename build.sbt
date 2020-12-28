@@ -1,5 +1,3 @@
-lazy val root = project.enablePlugins(ScalaJSPlugin)
-
 lazy val client = project
   .in(file("scala-js"))
   .enablePlugins(ScalaJSPlugin)
@@ -12,5 +10,5 @@ lazy val client = project
     )
   )
   .settings(
-    scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) }
+    scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.ESModule) }
   )
