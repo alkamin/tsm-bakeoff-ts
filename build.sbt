@@ -3,9 +3,10 @@ lazy val client = project
   .enablePlugins(ScalaJSPlugin)
   .settings(
     libraryDependencies ++= Seq(
-      "com.softwaremill.sttp.client" %%% "core" % "2.2.9",
-      "com.softwaremill.sttp.client" %%% "circe" % "2.2.9",
-      "com.azavea.stac4s" %%% "core" % "0.0.19",
+      "com.softwaremill.sttp.client3" %%% "core" % "3.0.0-RC15",
+      "com.softwaremill.sttp.client3" %%% "circe" % "3.0.0-RC15",
+      "com.azavea.stac4s" %%% "core" % "0.0.21",
+      "com.azavea.stac4s" %%% "client" % "0.0.21",
       "io.github.cquiroz" %%% "scala-java-time" % "2.0.0"
     )
   )
